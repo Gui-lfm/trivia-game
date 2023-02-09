@@ -1,14 +1,19 @@
-export const SAVE_NAME = "SAVE_NAME";
-export const SAVE_EMAIL = "SAVE_EMAIL";
+import { apiGame } from '../../services/api_game';
 
-const saveName = (name) => ({
+export const SAVE_NAME = 'SAVE_NAME';
+export const SAVE_EMAIL = 'SAVE_EMAIL';
+
+export const saveName = (name) => ({
   type: SAVE_NAME,
   payload: name,
-})
+});
 
-const saveEmail = (email) => ({
+export const saveEmail = (email) => ({
   type: SAVE_EMAIL,
   payload: email,
-})
+});
 
-
+export const fetchAPI = () => async (dispatch) => {
+  const apiGameCall = await apiGame();
+  dispatch(apiGameCall);
+};
