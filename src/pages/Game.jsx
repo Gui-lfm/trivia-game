@@ -4,7 +4,7 @@ class Game extends Component {
   render() {
     return (
       <div>
-        <p> </p>
+        <h1>Tela do Jogo</h1>
       </div>
     );
   }
