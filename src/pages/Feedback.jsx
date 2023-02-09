@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Header from '../components/Header';
 
 class Feedback extends Component {
   render() {
@@ -15,11 +16,7 @@ class Feedback extends Component {
 
     return (
       <div>
-        <header>
-          <img src="" alt="user" data-testid="header-player-name" />
-          <p data-testid="header-player-name">player name</p>
-          <p data-testid="header-score">player score</p>
-        </header>
+        <Header />
         <main>
           <p data-testid="feedback">
             { score < minScore
