@@ -6,6 +6,7 @@ class Game extends Component {
     return (
       <div>
         <Header />
+        <h1>Tela do Jogo</h1>
       </div>
     );
   }
