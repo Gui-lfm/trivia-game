@@ -1,4 +1,4 @@
-const apiRequestToken = async () => {
+export const apiRequestToken = async () => {
   const URL_REQUEST = 'https://opentdb.com/api_token.php?command=request';
   const response = await fetch(URL_REQUEST);
   const data = await response.json();
