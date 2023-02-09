@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Feedback extends Component {
   render() {
@@ -25,6 +26,8 @@ class Feedback extends Component {
               ? feedback.lessThanThree
               : feedback.threeOrMore }
           </p>
+          <p data-testid="feedback-total-score">pontuação</p>
+          <p data-testid="feedback-total-question">nº de respostas</p>
         </main>
       </div>
     );
@@ -35,4 +38,9 @@ Feedback.propTypes = {
   score: PropTypes.number.isRequired,
 };
 
-export default Feedback;
+const mapStateToProps = (state) => ({
+  score: state.player.score,
+  assertions: '',
+});
+
+export default connect(mapStateToProps)(Feedback);
