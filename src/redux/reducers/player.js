@@ -1,8 +1,9 @@
 import { USER_INFO } from '../actions';
 
 const INITIAL_STATE = {
-  name: '',
+  name: 'Felipe Tavares',
   email: '',
+  score: 0,
 };
 
 const player = (state = INITIAL_STATE, action) => {
