@@ -1,7 +1,7 @@
 import { USER_INFO } from '../actions';
 
 const INITIAL_STATE = {
-  name: 'Felipe Tavares',
+  name: 'Nome da pessoa',
   email: '',
   score: 0,
 };
