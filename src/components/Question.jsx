@@ -33,7 +33,15 @@ export default class Question extends React.Component {
   }
 
   render() {
-    const { category, question, correctAnswer, incorrectAnswers, answered } = this.props;
+    const {
+      category,
+      question,
+      correctAnswer,
+      incorrectAnswers,
+      nextBtn,
+      answered,
+    } = this.props;
+
     const toRand = [correctAnswer, ...incorrectAnswers];
     const answers = this.shuffleArr(toRand);
     return (
@@ -43,6 +51,7 @@ export default class Question extends React.Component {
         <div data-testid="answer-options">
           {answers.map((answer) => (
             <button
+              onClick={ nextBtn }
               style={ answer === correctAnswer
                 ? { border: '3px solid rgb(6, 240, 15)' } : { border: '3px solid red' } }
               data-testid={ this.isCorrectOption(answer) }

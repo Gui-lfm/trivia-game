@@ -12,6 +12,8 @@ class Game extends Component {
     this.state = {
       questions: [],
       currQuestion: 0,
+      // timer,
+      hasBeenAnswered: false,
       answered: false,
     };
   }
@@ -33,6 +35,22 @@ class Game extends Component {
     this.setState({ questions });
   }
 
+  createNextBtn = () => {
+    const { hasBeenAnswered } = this.state;
+
+    if (!hasBeenAnswered) {
+      this.setState({ hasBeenAnswered: true });
+    }
+  };
+
+  nextQuestion = () => {
+    const { currQuestion } = this.state;
+    const maxquestions = 5;
+    if (currQuestion < maxquestions) {
+      this.setState((prevState) => ({ currQuestion: prevState.currQuestion + 1 }));
+    }
+  };
+
   changeAnswered = () => {
     const { answered } = this.state;
     this.setState({
@@ -41,10 +59,11 @@ class Game extends Component {
   };
 
   render() {
-    const { questions, currQuestion, answered } = this.state;
-    return (
+    const { questions, currQuestion, answered, hasBeenAnswered } = this.state;
 
+    return (
       <div>
+        {console.log(questions.length)}
         <Header />
         <h1>Tela do Jogo</h1>
         <section>
@@ -56,12 +75,15 @@ class Game extends Component {
               correctAnswer={ data.correct_answer }
               incorrectAnswers={ data.incorrect_answers }
               key={ data.question }
+              nextBtn={ this.createNextBtn }
             />
           ))}
           <Timer
             changeAnswered={ this.changeAnswered }
           />
         </section>
+        {hasBeenAnswered
+        && <button onClick={ this.nextQuestion } data-testid="btn-next">Next</button>}
       </div>
     );
   }
