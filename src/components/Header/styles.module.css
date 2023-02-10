@@ -31,14 +31,9 @@
   width: 14.4rem;
 }
 
-.userPoints {
+.userScore {
   align-items: center;
   display: flex;
   gap: 1.3rem;
   margin-right: 6.7rem;
-}
-
-.headerContent button {
-  background: none;
-  border: none;
 }
