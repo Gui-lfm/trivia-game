@@ -66,8 +66,6 @@ class Question extends React.Component {
     const {
       category,
       question,
-      correctAnswer,
-      incorrectAnswers,
       difficulty,
       nextBtn,
       answered,
