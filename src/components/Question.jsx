@@ -33,7 +33,15 @@ export default class Question extends React.Component {
   }
 
   render() {
-    const { category, question, correctAnswer, incorrectAnswers, nextBtn, answered } = this.props;
+    const {
+      category,
+      question,
+      correctAnswer,
+      incorrectAnswers,
+      nextBtn,
+      answered,
+    } = this.props;
+
     const toRand = [correctAnswer, ...incorrectAnswers];
     const answers = this.shuffleArr(toRand);
     return (
