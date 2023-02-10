@@ -1,19 +1,14 @@
-import { apiGame } from '../../services/api_game';
+import { apiRequestQuestions } from '../../services/api';
 
 export const USER_INFO = 'USER_INFO';
-// export const SAVE_EMAIL = 'SAVE_EMAIL';
+export const GET_QUESTIONS = 'GET_QUESTIONS';
 
-export const requestUser = (name) => ({
+export const requestUser = (info) => ({
   type: USER_INFO,
-  payload: name,
+  payload: info,
 });
 
-// export const saveEmail = (email) => ({
-//   type: SAVE_EMAIL,
-//   payload: email,
-// });
-
 export const fetchAPI = () => async (dispatch) => {
-  const apiGameCall = await apiGame();
+  const apiGameCall = await apiRequestQuestions();
   dispatch(apiGameCall);
 };
