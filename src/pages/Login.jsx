@@ -47,7 +47,7 @@ class Login extends Component {
 
   render() {
     const { isDisabled, name, email } = this.state;
-    const { toggleUserName } = this.props;
+    const { saveUserName } = this.props;
     return (
       <div>
         <form>
@@ -75,7 +75,7 @@ class Login extends Component {
               event.preventDefault();
               this.handleClick();
               saveHashtoLocalStorage(email);
-              toggleUserName({ name });
+              saveUserName({ name });
             } }
           >
             Play
@@ -88,7 +88,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  toggleUserName: PropTypes.func.isRequired,
+  saveUserName: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,

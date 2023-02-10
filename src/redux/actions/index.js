@@ -8,11 +8,18 @@ export const requestUser = (info) => ({
   payload: info,
 });
 
-export const TOGGLE_USER_NAME = 'TOGGLE_USER_NAME';
+export const SAVE_USER_NAME = 'SAVE_USER_NAME';
+export const UPDATE_SCORE = 'UPDATE_SCORE';
 
-export function toggleUserName(payload) {
+export function saveUserName(payload) {
   return {
-    type: TOGGLE_USER_NAME,
+    type: SAVE_USER_NAME,
+    payload,
+  };
+}
+export function updateScore(payload) {
+  return {
+    type: UPDATE_SCORE,
     payload,
   };
 }
