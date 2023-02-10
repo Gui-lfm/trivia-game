@@ -48,11 +48,16 @@ class Game extends Component {
 
   nextQuestion = () => {
     const { currQuestion } = this.state;
-    const maxquestions = 5;
-    if (currQuestion < maxquestions) {
+    const { history } = this.props;
+    const maxquestions = 4;
+    if (currQuestion <= maxquestions) {
       this.setState((prevState) => (
         { currQuestion: prevState.currQuestion + 1,
           answered: false }));
+    }
+
+    if (currQuestion === maxquestions) {
+      history.push('/feedback');
     }
   };
 
@@ -62,6 +67,14 @@ class Game extends Component {
       answered: !answered,
     });
   };
+
+  // sendToFeedback = () => {
+  //   const { currQuestion } = this.state;
+
+  //   if (currQuestion === maxquestions) {
+
+  //   }
+  // }
 
   render() {
     const { questions, currQuestion, answered, hasBeenAnswered } = this.state;
@@ -74,18 +87,23 @@ class Game extends Component {
         <section>
           {questions.map((data, index) => (
             index === currQuestion
-            && <Question
-              answered={ answered }
-              { ...data }
-              correctAnswer={ data.correct_answer }
-              incorrectAnswers={ data.incorrect_answers }
-              key={ data.question }
-              nextBtn={ this.createNextBtn }
-            />
+            && (
+              <>
+                <Question
+                  answered={ answered }
+                  { ...data }
+                  correctAnswer={ data.correct_answer }
+                  incorrectAnswers={ data.incorrect_answers }
+                  key={ data.question }
+                  // sendToFeedback={ this.se }
+                  nextBtn={ this.createNextBtn }
+                />
+                <Timer
+                  changeAnswered={ this.changeAnswered }
+                />
+              </>)
           ))}
-          <Timer
-            changeAnswered={ this.changeAnswered }
-          />
+
         </section>
         {hasBeenAnswered
         && <button onClick={ this.nextQuestion } data-testid="btn-next">Next</button>}
@@ -93,6 +111,12 @@ class Game extends Component {
     );
   }
 }
+
+Game.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
 
 Game.propTypes = {
   history: PropTypes.arrayOf(objectOf.any).isRequired,

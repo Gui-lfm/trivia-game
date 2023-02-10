@@ -68,8 +68,10 @@ class Question extends React.Component {
       question,
       difficulty,
       nextBtn,
+      // sendToFeedback,
       answered,
     } = this.props;
+
     const { randAnswers } = this.state;
 
     return (
