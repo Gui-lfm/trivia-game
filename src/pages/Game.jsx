@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Question from '../components/Question';
+import Timer from '../components/Timer';
 import { apiRequestQuestions } from '../services/api';
 
 class Game extends Component {
@@ -12,6 +13,8 @@ class Game extends Component {
       questions: [],
       currQuestion: 0,
       // timer,
+      hasBeenAnswered: false,
+      answered: false,
     };
   }
 
@@ -32,24 +35,55 @@ class Game extends Component {
     this.setState({ questions });
   }
 
-  render() {
-    const { questions, currQuestion } = this.state;
-    return (
+  createNextBtn = () => {
+    const { hasBeenAnswered } = this.state;
 
+    if (!hasBeenAnswered) {
+      this.setState({ hasBeenAnswered: true });
+    }
+  };
+
+  nextQuestion = () => {
+    const { currQuestion } = this.state;
+    const maxquestions = 5;
+    if (currQuestion < maxquestions) {
+      this.setState((prevState) => ({ currQuestion: prevState.currQuestion + 1 }));
+    }
+  };
+
+  changeAnswered = () => {
+    const { answered } = this.state;
+    this.setState({
+      answered: !answered,
+    });
+  };
+
+  render() {
+    const { questions, currQuestion, answered, hasBeenAnswered } = this.state;
+
+    return (
       <div>
+        {console.log(questions.length)}
         <Header />
         <h1>Tela do Jogo</h1>
         <section>
           {questions.map((data, index) => (
             index === currQuestion
             && <Question
+              answered={ answered }
               { ...data }
               correctAnswer={ data.correct_answer }
               incorrectAnswers={ data.incorrect_answers }
               key={ data.question }
+              nextBtn={ this.createNextBtn }
             />
           ))}
+          <Timer
+            changeAnswered={ this.changeAnswered }
+          />
         </section>
+        {hasBeenAnswered
+        && <button onClick={ this.nextQuestion } data-testid="btn-next">Next</button>}
       </div>
     );
   }

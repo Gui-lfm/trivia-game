@@ -49,6 +49,8 @@ class Question extends React.Component {
       correctAnswer,
       incorrectAnswers,
       difficulty,
+      nextBtn,
+      answered,
     } = this.props;
 
     const toRand = [correctAnswer, ...incorrectAnswers];
@@ -60,11 +62,15 @@ class Question extends React.Component {
         <div data-testid="answer-options">
           {answers.map((answer) => (
             <button
+              style={ answer === correctAnswer
+                ? { border: '3px solid rgb(6, 240, 15)' } : { border: '3px solid red' } }
               onClick={ () => {
                 this.score(answer, difficulty);
+                nextBtn();
               } }
               data-testid={ this.isCorrectOption(answer) }
               key={ answer }
+              disabled={ answered }
             >
               {answer}
             </button>
