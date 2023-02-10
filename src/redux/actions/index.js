@@ -1,5 +1,13 @@
 import { apiRequestQuestions } from '../../services/api';
 
+export const USER_INFO = 'USER_INFO';
+// export const GET_QUESTIONS = 'GET_QUESTIONS';
+
+export const requestUser = (info) => ({
+  type: USER_INFO,
+  payload: info,
+});
+
 export const SAVE_USER_NAME = 'SAVE_USER_NAME';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
 
