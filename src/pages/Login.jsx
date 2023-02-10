@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { apiRequestToken } from '../services/api_game';
-import { saveHashtoLocalStorage } from '../services/gravatar';
-import * as Actions from '../redux/actions';
 import SettingsButton from '../components/SettingsButton';
+import * as Actions from '../redux/actions';
+import { apiRequestToken } from '../services/api';
+import { saveHashtoLocalStorage } from '../services/gravatar';
 
 class Login extends Component {
   state = {
@@ -39,12 +39,10 @@ class Login extends Component {
 
   handleClick = async () => {
     const { history } = this.props;
-    // const { dispatch } = this.props;
     const data = await apiRequestToken();
     const { token } = data;
     localStorage.setItem('token', token);
     history.push('/game');
-    // dispatch();
   };
 
   render() {
@@ -94,7 +92,6 @@ Login.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
-  // dispatch: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch);
