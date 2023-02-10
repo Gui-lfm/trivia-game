@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import { apiRequestToken } from '../services/api_game';
+import { saveHashtoLocalStorage } from '../services/gravatar';
+import * as Actions from '../redux/actions';
 
 class Login extends Component {
   state = {
@@ -46,6 +49,7 @@ class Login extends Component {
 
   render() {
     const { isDisabled, name, email } = this.state;
+    const { toggleUserName } = this.props;
     return (
       <div>
         <form>
@@ -72,6 +76,8 @@ class Login extends Component {
             onClick={ (event) => {
               event.preventDefault();
               this.handleClick();
+              saveHashtoLocalStorage(email);
+              toggleUserName({ name });
             } }
           >
             Play
@@ -94,10 +100,13 @@ class Login extends Component {
 }
 
 Login.propTypes = {
+  toggleUserName: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
   // dispatch: PropTypes.func.isRequired,
 };
 
-export default connect()(Login);
+const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch);
+
+export default connect(null, mapDispatchToProps)(Login);

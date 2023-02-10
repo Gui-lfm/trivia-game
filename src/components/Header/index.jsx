@@ -1,20 +1,18 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './styles.module.css';
-// import defaultAvatar from '../../assets/default-avatar.png';
 import starScore from '../../assets/star-score.svg';
 import gearSettings from '../../assets/gear-settings.svg';
-// import * as AllActions from '../../redux/actions';
+import { getHashFromLocalStorage } from '../../services/gravatar';
 
 function Header({ score, name }) {
-  const img = 'https://www.gravatar.com/avatar/c19ad9dbaf91c5533605fbf985177ccc';
   return (
     <header className={ styles.header }>
       <div className={ styles.headerContent }>
         <div className={ styles.userInfos }>
           <img
             className={ styles.userAvatar }
-            src={ img }
+            src={ getHashFromLocalStorage() }
             alt="user avatar"
             data-testid="header-profile-picture"
           />
