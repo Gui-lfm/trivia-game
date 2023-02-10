@@ -18,13 +18,13 @@ class Feedback extends Component {
       <div>
         <Header />
         <main>
-          <p data-testid="feedback">
+          <p data-testid="feedback-text">
             { score < minScore
               ? feedback.lessThanThree
               : feedback.threeOrMore }
           </p>
-          <p data-testid="feedback-total-score">pontuação</p>
-          <p data-testid="feedback-total-question">nº de respostas</p>
+          <p data-testid="feedback-total-score">{score}</p>
+          <p data-testid="feedback-total-question">n de respostas</p>
         </main>
       </div>
     );
