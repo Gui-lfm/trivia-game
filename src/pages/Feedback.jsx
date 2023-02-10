@@ -24,7 +24,7 @@ class Feedback extends Component {
               : feedback.threeOrMore }
           </p>
           <p data-testid="feedback-total-score">{score}</p>
-          <p data-testid="feedback-total-question">nº de respostas</p>
+          <p data-testid="feedback-total-question">n de respostas</p>
         </main>
       </div>
     );
