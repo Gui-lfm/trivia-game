@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Question from '../components/Question';
+import Timer from '../components/Timer';
 import { apiRequestQuestions } from '../services/api';
 
 class Game extends Component {
@@ -11,7 +12,7 @@ class Game extends Component {
     this.state = {
       questions: [],
       currQuestion: 0,
-      // timer,
+      answered: false,
     };
   }
 
@@ -32,8 +33,15 @@ class Game extends Component {
     this.setState({ questions });
   }
 
+  changeAnswered = () => {
+    const { answered } = this.state;
+    this.setState({
+      answered: !answered,
+    });
+  };
+
   render() {
-    const { questions, currQuestion } = this.state;
+    const { questions, currQuestion, answered } = this.state;
     return (
 
       <div>
@@ -43,12 +51,16 @@ class Game extends Component {
           {questions.map((data, index) => (
             index === currQuestion
             && <Question
+              answered={ answered }
               { ...data }
               correctAnswer={ data.correct_answer }
               incorrectAnswers={ data.incorrect_answers }
               key={ data.question }
             />
           ))}
+          <Timer
+            changeAnswered={ this.changeAnswered }
+          />
         </section>
       </div>
     );
