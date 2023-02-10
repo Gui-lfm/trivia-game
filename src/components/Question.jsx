@@ -1,12 +1,22 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as Actions from '../redux/actions';
 
-export default class Question extends React.Component {
+class Question extends React.Component {
   constructor(props) {
     super(props);
     this.isCorrectOption = this.isCorrectOption.bind(this);
     this.shuffleArr = this.shuffleArr.bind(this);
   }
+
+  isCorrect = (answer) => {
+    const { correctAnswer, updateScore } = this.props;
+    if (correctAnswer === answer) {
+      updateScore({ score: 10 });
+    }
+  };
 
   isCorrectOption(option) {
     const { incorrectAnswers, correctAnswer } = this.props;
@@ -23,12 +33,10 @@ export default class Question extends React.Component {
    * @returns - A shuffled Array
    */
   shuffleArr(arr) {
-    console.log(arr[0]);
     for (let i = arr.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    console.log(arr[0]);
     return arr;
   }
 
@@ -43,6 +51,10 @@ export default class Question extends React.Component {
         <div data-testid="answer-options">
           {answers.map((answer) => (
             <button
+              onClick={ () => {
+                console.log(answer === correctAnswer);
+                this.isCorrect(answer);
+              } }
               data-testid={ this.isCorrectOption(answer) }
               key={ answer }
             >
@@ -63,3 +75,7 @@ Question.propTypes = {
   }),
   question: PropTypes.string,
 }.isRequired;
+
+const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch);
+
+export default connect(null, mapDispatchToProps)(Question);
