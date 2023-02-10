@@ -6,12 +6,10 @@ import game from './game';
 import player from './player';
 import ranking from './ranking';
 
-const rootReducer = combineReducers({
+export default combineReducers({
   player,
   game,
   configs,
   ranking,
   feedback,
 });
-
-export default rootReducer;

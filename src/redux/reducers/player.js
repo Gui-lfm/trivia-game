@@ -1,14 +1,14 @@
-import { USER_INFO } from '../actions';
+import { TOGGLE_USER_NAME } from '../actions';
 
 const INITIAL_STATE = {
   name: '',
-  email: '',
+  score: 0,
 };
 
-const player = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-  case USER_INFO:
-    return { ...state, name: action.payload };
+const player = (state = INITIAL_STATE, { type, payload }) => {
+  switch (type) {
+  case TOGGLE_USER_NAME:
+    return { ...state, name: payload.name };
   default:
     return state;
   }

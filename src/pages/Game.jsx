@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes, { objectOf } from 'prop-types';
 import { connect } from 'react-redux';
-/* import Header from '../components/Header'; */
+import Header from '../components/Header';
 import { apiRequestQuestions } from '../services/api';
 import Question from '../components/Question';
 
@@ -35,9 +35,11 @@ class Game extends Component {
   render() {
     const { questions, currQuestion } = this.state;
     return (
-      <>
-        {/*         <Header /> */}
-        <section>
+
+      <div>
+        <Header />
+        <h1>Tela do Jogo</h1>
+         <section>
           {questions.map((data, index) => (
             index === currQuestion
             && <Question
@@ -48,7 +50,7 @@ class Game extends Component {
             />
           ))}
         </section>
-      </>
+      </div>
     );
   }
 }
