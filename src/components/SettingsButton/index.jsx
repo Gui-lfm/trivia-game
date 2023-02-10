@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 export default function SettingsButton() {
   return (
-    <Link className={ styles.settingsButton } to="/settings">
+    <Link className={ styles.settingsButton } data-testid="btn-settings" to="/settings">
       <img src={ gearSettings } alt="A gear representing settings" />
     </Link>
   );
