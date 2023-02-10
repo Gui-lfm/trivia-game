@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 import starScore from '../../assets/star-score.svg';
-import gearSettings from '../../assets/gear-settings.svg';
 import { getHashFromLocalStorage } from '../../services/gravatar';
+import SettingsButton from '../SettingsButton';
 
 function Header({ score, name }) {
   return (
@@ -18,7 +18,7 @@ function Header({ score, name }) {
           />
           <p data-testid="header-player-name">{name}</p>
         </div>
-        <div className={ styles.userPoints }>
+        <div className={ styles.userScore }>
           <img src={ starScore } alt="A star representing your score" />
           <p data-testid="header-score">
             Pontos:
@@ -26,9 +26,7 @@ function Header({ score, name }) {
             {score}
           </p>
         </div>
-        <button>
-          <img src={ gearSettings } alt="A gear representing settings" />
-        </button>
+        <SettingsButton />
       </div>
     </header>
   );
