@@ -11,10 +11,17 @@ class Question extends React.Component {
     this.shuffleArr = this.shuffleArr.bind(this);
   }
 
-  isCorrect = (answer) => {
+  score = (answer, difficulty) => {
     const { correctAnswer, updateScore } = this.props;
+    const normal = 10;
+    const complement = {
+      hard: 3,
+      medium: 2,
+      easy: 1,
+    };
+
     if (correctAnswer === answer) {
-      updateScore({ score: 10 });
+      updateScore({ score: normal + complement[difficulty] });
     }
   };
 
@@ -27,11 +34,6 @@ class Question extends React.Component {
     return `wrong-answer-${index}`;
   }
 
-  /**
-   * Durstenfeld Shuffle
-   * @param arr
-   * @returns - A shuffled Array
-   */
   shuffleArr(arr) {
     for (let i = arr.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -41,7 +43,7 @@ class Question extends React.Component {
   }
 
   render() {
-    const { category, question, correctAnswer, incorrectAnswers } = this.props;
+    const { category, question, correctAnswer, incorrectAnswers, difficulty } = this.props;
     const toRand = [correctAnswer, ...incorrectAnswers];
     const answers = this.shuffleArr(toRand);
     return (
@@ -52,8 +54,7 @@ class Question extends React.Component {
           {answers.map((answer) => (
             <button
               onClick={ () => {
-                console.log(answer === correctAnswer);
-                this.isCorrect(answer);
+                this.score(answer, difficulty);
               } }
               data-testid={ this.isCorrectOption(answer) }
               key={ answer }
