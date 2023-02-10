@@ -4,8 +4,19 @@ import React from 'react';
 export default class Question extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      randAnswers: [],
+    };
     this.isCorrectOption = this.isCorrectOption.bind(this);
     this.shuffleArr = this.shuffleArr.bind(this);
+  }
+
+  componentDidMount() {
+    const { correctAnswer, incorrectAnswers } = this.props;
+    const toRand = [correctAnswer, ...incorrectAnswers];
+    this.setState({
+      randAnswers: this.shuffleArr(toRand),
+    });
   }
 
   isCorrectOption(option) {
@@ -32,28 +43,33 @@ export default class Question extends React.Component {
     return arr;
   }
 
+  colorAlternative(answer) {
+    const { correctAnswer, answered } = this.props;
+    if (answered) {
+      return answer === correctAnswer
+        ? { border: '3px solid rgb(6, 240, 15)' }
+        : { border: '3px solid red' };
+    }
+  }
+
   render() {
     const {
       category,
       question,
-      correctAnswer,
-      incorrectAnswers,
       nextBtn,
       answered,
     } = this.props;
+    const { randAnswers } = this.state;
 
-    const toRand = [correctAnswer, ...incorrectAnswers];
-    const answers = this.shuffleArr(toRand);
     return (
       <div>
         <h4 data-testid="question-category">{category}</h4>
         <p data-testid="question-text">{question}</p>
         <div data-testid="answer-options">
-          {answers.map((answer) => (
+          {randAnswers.map((answer) => (
             <button
               onClick={ nextBtn }
-              style={ answer === correctAnswer
-                ? { border: '3px solid rgb(6, 240, 15)' } : { border: '3px solid red' } }
+              style={ this.colorAlternative(answer) }
               data-testid={ this.isCorrectOption(answer) }
               key={ answer }
               disabled={ answered }

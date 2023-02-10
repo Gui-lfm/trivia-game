@@ -36,10 +36,13 @@ class Game extends Component {
   }
 
   createNextBtn = () => {
-    const { hasBeenAnswered } = this.state;
+    const { hasBeenAnswered, answered } = this.state;
 
     if (!hasBeenAnswered) {
       this.setState({ hasBeenAnswered: true });
+    }
+    if (!answered) {
+      this.setState({ answered: true });
     }
   };
 
@@ -47,7 +50,9 @@ class Game extends Component {
     const { currQuestion } = this.state;
     const maxquestions = 5;
     if (currQuestion < maxquestions) {
-      this.setState((prevState) => ({ currQuestion: prevState.currQuestion + 1 }));
+      this.setState((prevState) => (
+        { currQuestion: prevState.currQuestion + 1,
+          answered: false }));
     }
   };
 
