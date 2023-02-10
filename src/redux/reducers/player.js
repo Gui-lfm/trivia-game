@@ -1,4 +1,4 @@
-import { TOGGLE_USER_NAME } from '../actions';
+import { SAVE_USER_NAME, UPDATE_SCORE } from '../actions';
 
 const INITIAL_STATE = {
   name: '',
@@ -7,8 +7,10 @@ const INITIAL_STATE = {
 
 const player = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-  case TOGGLE_USER_NAME:
+  case SAVE_USER_NAME:
     return { ...state, name: payload.name };
+  case UPDATE_SCORE:
+    return { ...state, score: state.score + payload.score };
   default:
     return state;
   }
