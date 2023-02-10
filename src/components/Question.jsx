@@ -43,6 +43,8 @@ export default class Question extends React.Component {
         <div data-testid="answer-options">
           {answers.map((answer) => (
             <button
+              style={ answer === correctAnswer
+                ? { border: '3px solid rgb(6, 240, 15)' } : { border: '3px solid red' } }
               data-testid={ this.isCorrectOption(answer) }
               key={ answer }
             >
