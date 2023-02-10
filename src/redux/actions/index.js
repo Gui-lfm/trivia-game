@@ -1,6 +1,5 @@
 import { apiRequestQuestions } from '../../services/api';
 
-
 export const USER_INFO = 'USER_INFO';
 // export const GET_QUESTIONS = 'GET_QUESTIONS';
 

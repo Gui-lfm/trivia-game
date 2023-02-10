@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { apiRequestToken } from '../services/api_game';
-import { saveHashtoLocalStorage } from '../services/gravatar';
-import * as Actions from '../redux/actions';
 import SettingsButton from '../components/SettingsButton';
+import * as Actions from '../redux/actions';
+import { apiRequestToken } from '../services/api';
+import { saveHashtoLocalStorage } from '../services/gravatar';
 
 class Login extends Component {
   state = {

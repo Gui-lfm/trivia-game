@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
 import PropTypes, { objectOf } from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { apiRequestQuestions } from '../services/api';
 import Question from '../components/Question';
+import { apiRequestQuestions } from '../services/api';
 
 class Game extends Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class Game extends Component {
       <div>
         <Header />
         <h1>Tela do Jogo</h1>
-         <section>
+        <section>
           {questions.map((data, index) => (
             index === currQuestion
             && <Question
