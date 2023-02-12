@@ -23,7 +23,7 @@ class Question extends React.Component {
   }
 
   score = (answer, difficulty) => {
-    const { correctAnswer, updateScore } = this.props;
+    const { correctAnswer, updateScore, updateAssertions } = this.props;
     const normal = 10;
     const complement = {
       hard: 3,
@@ -33,6 +33,7 @@ class Question extends React.Component {
 
     if (correctAnswer === answer) {
       updateScore({ score: normal + complement[difficulty] });
+      updateAssertions();
     }
   };
 
