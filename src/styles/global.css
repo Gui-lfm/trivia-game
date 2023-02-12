@@ -1,5 +1,12 @@
 :root {
   font-size: 62.5%;
+
+  --green-trybe: rgba(47, 193, 140);
+
+  --green-trybe-hover: rgb(38, 154, 112);
+
+  --green-trybe-disabled: rgb(127, 127, 127);
+
 }
 
 * {
@@ -14,6 +21,10 @@ body {
   width: 100%;
 }
 
-a, a:hover {
+a, a:hover, button {
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
