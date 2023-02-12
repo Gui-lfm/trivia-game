@@ -10,6 +10,7 @@ export const requestUser = (info) => ({
 
 export const SAVE_USER_NAME = 'SAVE_USER_NAME';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
+export const UPDATE_ASSERTIONS = 'UPDATE_ASSERTIONS';
 
 export function saveUserName(payload) {
   return {
@@ -21,6 +22,12 @@ export function updateScore(payload) {
   return {
     type: UPDATE_SCORE,
     payload,
+  };
+}
+
+export function updateAssertions() {
+  return {
+    type: UPDATE_ASSERTIONS,
   };
 }
 
