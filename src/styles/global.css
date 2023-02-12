@@ -1,11 +1,19 @@
 :root {
   font-size: 62.5%;
 
-  --green-trybe: rgba(47, 193, 140);
+  --green-trybe: #2fc18b;
 
-  --green-trybe-hover: rgb(38, 154, 112);
+  --green-trybe-hover: #279b70;
 
-  --green-trybe-disabled: rgb(127, 127, 127);
+  --gray-trybe-disabled: grey;
+
+  --yellow: #f9ba1a;
+
+  --magenta: #ea5d5d;
+
+  --purple: #3c1b7a;
+
+  --header-height: 11.3rem;
 
 }
 

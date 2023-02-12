@@ -1,0 +1,81 @@
+.logoTrivia {
+  left: 50%;
+  position: absolute;
+  top: -26rem;
+  transform: translateX(-50%);
+  width: min(22rem, 100%);
+  z-index: 3;
+}
+
+.mainBoxQuestion {
+  color: white;
+  display: flex;
+  height: 32rem;
+  margin-top: 16.2rem;
+  position: relative;
+  width: 107.9rem;
+}
+
+.leftSide {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 50%;
+}
+
+.rightSide {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+
+}
+
+.titleQuestionBox {
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 700;
+  height: 28.6rem;
+  justify-content: center;
+  padding: 2rem;
+  position: absolute;
+  text-align: center;
+  width: 43.9rem;
+}
+
+.category {
+  align-items: center;
+  background-color: var(--yellow);
+  border-radius: 100px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: 4.5rem;
+  justify-content: center;
+  position: absolute;
+  top: -0.4rem;
+  width: 41.3rem;
+  z-index: 2;
+}
+
+.logoTrybe {
+  bottom: -6rem;
+  left: 50%;
+  margin-top: 2.6rem;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.titleQuestion {
+  color: black;
+}
+
+/* @media screen and ( max-width : 470px ) {
+
+} */

@@ -1,6 +1,6 @@
 .header {
   background: white;
-  height: 11.3rem;
+  height: var(--header-height);
   position: relative;
   width: 100%;
 }

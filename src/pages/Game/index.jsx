@@ -6,8 +6,8 @@ import Question from '../../components/Question';
 import Timer from '../../components/Timer';
 import { apiRequestQuestions } from '../../services/api';
 import styles from './styles.module.css';
-import logoTrivia from '../../assets/logo-trivia.svg';
-import logoTrybe from '../../assets/trybe-logo.svg';
+import iconTimer from '../../assets/icon-timer.svg';
+// import logoTrybe from '../../assets/trybe-logo.svg';
 
 class Game extends Component {
   constructor(props) {
@@ -85,30 +85,35 @@ class Game extends Component {
       <div>
         <Header />
         <main className={ styles.wrapper }>
-          <img className={ styles.logoTrivia } src={ logoTrivia } alt="" />
-          <section>
-            {questions.map((data, index) => (
-              index === currQuestion
+          {questions.map((data, index) => (
+            index === currQuestion
                 && (
-                  <>
-                    <Question
-                      answered={ answered }
-                      { ...data }
-                      correctAnswer={ data.correct_answer }
-                      incorrectAnswers={ data.incorrect_answers }
-                      key={ data.question }
-                      // sendToFeedback={ this.se }
-                      nextBtn={ this.createNextBtn }
-                    />
-                    <Timer
-                      changeAnswered={ this.changeAnswered }
-                    />
-                  </>)
-            ))}
-          </section>
+                  <div
+                    key={ data.question }
+                    className={ styles.mainGame }
+                  >
+                    <div>
+                      <Question
+                        answered={ answered }
+                        { ...data }
+                        correctAnswer={ data.correct_answer }
+                        incorrectAnswers={ data.incorrect_answers }
+                        key={ data.question }
+                        // sendToFeedback={ this.se }
+                        nextBtn={ this.createNextBtn }
+                      />
+                    </div>
+                    <div className={ styles.timer }>
+                      <img src={ iconTimer } alt="" />
+                      <p>Tempo:</p>
+                      <Timer
+                        changeAnswered={ this.changeAnswered }
+                      />
+                    </div>
+                  </div>)
+          ))}
           {hasBeenAnswered
             && <button onClick={ this.nextQuestion } data-testid="btn-next">Next</button>}
-          <img className={ styles.logoTrybe } src={ logoTrybe } alt="" />
         </main>
         <footer className={ styles.footer } />
       </div>

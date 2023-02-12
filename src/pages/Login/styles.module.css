@@ -73,7 +73,7 @@
 }
 
 .submitButton:disabled {
-  background: var(--green-trybe-disabled);
+  background: var(--gray-trybe-disabled);
 }
 
 .input:focus {

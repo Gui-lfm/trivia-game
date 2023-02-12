@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from '../redux/actions';
+import * as Actions from '../../redux/actions';
+import logoTrivia from '../../assets/logo-trivia.svg';
+import logoTrybe from '../../assets/trybe-logo.svg';
+import styles from './styles.module.css';
 
 class Question extends React.Component {
   constructor(props) {
@@ -76,10 +79,30 @@ class Question extends React.Component {
     const { randAnswers } = this.state;
 
     return (
-      <div>
-        <h4 data-testid="question-category">{category}</h4>
-        <p data-testid="question-text">{question}</p>
-        <div data-testid="answer-options">
+      <div
+        data-testid="answer-options"
+        className={ styles.mainBoxQuestion }
+      >
+        <div className={ styles.leftSide }>
+          <img className={ styles.logoTrivia } src={ logoTrivia } alt="" />
+          <h4
+            className={ styles.category }
+            data-testid="question-category"
+          >
+            {category}
+          </h4>
+          <div className={ styles.titleQuestionBox }>
+            <p
+              className={ styles.titleQuestion }
+              data-testid="question-text"
+            >
+              {question}
+            </p>
+          </div>
+          <img className={ styles.logoTrybe } src={ logoTrybe } alt="" />
+        </div>
+
+        <div className={ styles.rightSide }>
           {randAnswers.map((answer) => (
             <button
               style={ this.colorAlternative(answer) }
