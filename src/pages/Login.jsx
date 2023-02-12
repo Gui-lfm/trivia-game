@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import SettingsButton from '../components/SettingsButton';
 import * as Actions from '../redux/actions';
 import { apiRequestToken } from '../services/api';
-import { saveHashtoLocalStorage } from '../services/gravatar';
+import { saveHashAndUserNametoLS } from '../services/gravatar';
 
 class Login extends Component {
   state = {
@@ -74,7 +74,7 @@ class Login extends Component {
             onClick={ (event) => {
               event.preventDefault();
               this.handleClick();
-              saveHashtoLocalStorage(email);
+              saveHashAndUserNametoLS(email, name);
               saveUserName({ name });
             } }
           >
