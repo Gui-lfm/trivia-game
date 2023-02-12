@@ -1,10 +1,13 @@
 import PropTypes, { objectOf } from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../components/Header';
-import Question from '../components/Question';
-import Timer from '../components/Timer';
-import { apiRequestQuestions } from '../services/api';
+import Header from '../../components/Header';
+import Question from '../../components/Question';
+import Timer from '../../components/Timer';
+import { apiRequestQuestions } from '../../services/api';
+import styles from './styles.module.css';
+import logoTrivia from '../../assets/logo-trivia.svg';
+import logoTrybe from '../../assets/trybe-logo.svg';
 
 class Game extends Component {
   constructor(props) {
@@ -78,35 +81,36 @@ class Game extends Component {
 
   render() {
     const { questions, currQuestion, answered, hasBeenAnswered } = this.state;
-
     return (
       <div>
-        {console.log(questions.length)}
         <Header />
-        <h1>Tela do Jogo</h1>
-        <section>
-          {questions.map((data, index) => (
-            index === currQuestion
-            && (
-              <>
-                <Question
-                  answered={ answered }
-                  { ...data }
-                  correctAnswer={ data.correct_answer }
-                  incorrectAnswers={ data.incorrect_answers }
-                  key={ data.question }
-                  // sendToFeedback={ this.se }
-                  nextBtn={ this.createNextBtn }
-                />
-                <Timer
-                  changeAnswered={ this.changeAnswered }
-                />
-              </>)
-          ))}
-
-        </section>
-        {hasBeenAnswered
-        && <button onClick={ this.nextQuestion } data-testid="btn-next">Next</button>}
+        <main className={ styles.wrapper }>
+          <img className={ styles.logoTrivia } src={ logoTrivia } alt="" />
+          <section>
+            {questions.map((data, index) => (
+              index === currQuestion
+                && (
+                  <>
+                    <Question
+                      answered={ answered }
+                      { ...data }
+                      correctAnswer={ data.correct_answer }
+                      incorrectAnswers={ data.incorrect_answers }
+                      key={ data.question }
+                      // sendToFeedback={ this.se }
+                      nextBtn={ this.createNextBtn }
+                    />
+                    <Timer
+                      changeAnswered={ this.changeAnswered }
+                    />
+                  </>)
+            ))}
+          </section>
+          {hasBeenAnswered
+            && <button onClick={ this.nextQuestion } data-testid="btn-next">Next</button>}
+          <img className={ styles.logoTrybe } src={ logoTrybe } alt="" />
+        </main>
+        <footer className={ styles.footer } />
       </div>
     );
   }

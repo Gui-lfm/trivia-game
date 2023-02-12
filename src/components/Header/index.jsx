@@ -28,7 +28,9 @@ function Header({ score }) {
             {score}
           </p>
         </div>
-        <SettingsButton />
+        <div className={ styles.gear }>
+          <SettingsButton />
+        </div>
       </div>
     </header>
   );

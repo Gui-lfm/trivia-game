@@ -1,0 +1,30 @@
+.wrapper {
+  align-items: center;
+  background: url('../../assets/backgroundGame.svg') no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem 0;
+  width: 100%;
+}
+
+.footer {
+  background: #3c1b7a;
+  bottom: 0;
+  height: 16.6rem;
+  position: fixed;
+  width: 100%;
+  z-index: 0;
+}
+
+.logoTrivia {
+  width: min(25rem, 100%);
+}
+
+/* @media screen and ( max-width : 470px ) {
+
+} */
