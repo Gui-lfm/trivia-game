@@ -50,6 +50,25 @@
   width: 2.5rem;
 }
 
-/* @media screen and ( max-width : 470px ) {
+@media screen and ( max-width : 1090px ) {
 
-} */
+  .wrapper {
+    height: 90rem;
+  }
+
+  .mainGame {
+    width: 100vw;
+  }
+
+  .timer {
+    height: fit-content;
+    left: 50%;
+    top: 37rem;
+    transform: translateX(-50%);
+    width: 100vw;
+  }
+
+  .footer {
+    display: none;
+  }
+}

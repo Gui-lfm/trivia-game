@@ -24,6 +24,7 @@
 }
 
 body {
+  background-color: #3c1b7a; /* Define a cor da statusbar do Safari no iOS */
   font-family: sans-serif;
   font-size: 1.6rem;
   width: 100%;

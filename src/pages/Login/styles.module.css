@@ -89,4 +89,9 @@
   .form {
     padding: 1.5rem;
   }
+
+  .logoTrivia {
+    width: min(16rem, 100%);
+  }
+
 }

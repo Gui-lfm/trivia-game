@@ -60,7 +60,7 @@
     align-items: center;
     flex-direction: column;
     position: initial;
-    width: 100%;
+    width: 100vw;
   }
 
   .gear {
