@@ -1,10 +1,13 @@
-import PropTypes, { objectOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Header from '../components/Header';
 import Question from '../components/Question';
 import Timer from '../components/Timer';
+import * as Actions from '../redux/actions';
 import { apiRequestQuestions } from '../services/api';
+import { getHashFromLocalStorage } from '../services/gravatar';
 
 class Game extends Component {
   constructor(props) {
@@ -57,6 +60,12 @@ class Game extends Component {
     }
 
     if (currQuestion === maxquestions) {
+      const { name, score, updateRanking } = this.props;
+      updateRanking({
+        name,
+        score,
+        avatar: getHashFromLocalStorage(),
+      });
       history.push('/feedback');
     }
   };
@@ -116,10 +125,16 @@ Game.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  updateRanking: PropTypes.func.isRequired,
 };
 
-Game.propTypes = {
-  history: PropTypes.arrayOf(objectOf.any).isRequired,
-}.isRequired;
+const mapStateToProps = (state) => ({
+  name: state.player.name,
+  score: state.player.score,
+});
 
-export default connect()(Game);
+const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
