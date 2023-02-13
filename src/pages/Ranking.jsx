@@ -29,6 +29,7 @@ class Ranking extends Component {
             name={ user.name }
             score={ user.score }
             avatar={ user.avatar }
+            index={ index }
           />))}
         </div>
 
