@@ -27,7 +27,7 @@ class Question extends React.Component {
   }
 
   score = (answer, difficulty) => {
-    const { correctAnswer, updateScore, updateAssertions } = this.props;
+    const { correctAnswer, updateScore, updateAssertions, seconds } = this.props;
     const normal = 10;
     const complement = {
       hard: 3,
@@ -36,7 +36,7 @@ class Question extends React.Component {
     };
 
     if (correctAnswer === answer) {
-      updateScore({ score: normal + complement[difficulty] });
+      updateScore({ score: normal + (seconds * complement[difficulty]) });
       updateAssertions();
     }
   };
@@ -143,4 +143,8 @@ Question.propTypes = {
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch);
 
-export default connect(null, mapDispatchToProps)(Question);
+const mapStateToProps = (state) => ({
+  seconds: state.game.seconds,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question);

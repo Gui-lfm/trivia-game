@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as Actions from '../redux/actions';
 
 class Timer extends React.Component {
   state = {
@@ -13,7 +16,7 @@ class Timer extends React.Component {
 
   descrease = () => {
     const { toShow } = this.state;
-    const { changeAnswered } = this.props;
+    const { changeAnswered, sendSeconds } = this.props;
     if (toShow === 0) {
       changeAnswered();
       clearInterval(this.timer);
@@ -22,6 +25,7 @@ class Timer extends React.Component {
     this.setState({
       toShow: toShow - 1,
     });
+    sendSeconds(toShow);
   };
 
   render() {
@@ -36,4 +40,6 @@ Timer.propTypes = {
   changeAnswered: PropTypes.func,
 }.isRequired;
 
-export default Timer;
+const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch);
+
+export default connect(null, mapDispatchToProps)(Timer);
