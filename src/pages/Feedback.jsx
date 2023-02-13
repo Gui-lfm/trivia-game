@@ -2,9 +2,22 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import Header from '../components/Header';
+import * as Actions from '../redux/actions';
 
 class Feedback extends Component {
+  componentWillUnmount() {
+    const { resetPoints } = this.props;
+    resetPoints();
+    this.setLocalStorage();
+  }
+
+  setLocalStorage = () => {
+    const { ranking } = this.props;
+    localStorage.setItem('ranking', JSON.stringify(ranking));
+  };
+
   render() {
     const { assertions, score } = this.props;
 
@@ -41,11 +54,19 @@ class Feedback extends Component {
 Feedback.propTypes = {
   score: PropTypes.number.isRequired,
   assertions: PropTypes.number.isRequired,
+  resetPoints: PropTypes.func.isRequired,
+  ranking: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    score: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
   score: state.player.score,
   assertions: state.player.assertions,
+  ranking: state.ranking.ranking,
 });
 
-export default connect(mapStateToProps)(Feedback);
+const mapDispatchToProps = (dispatch) => bindActionCreators(Actions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feedback);
