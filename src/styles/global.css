@@ -1,5 +1,22 @@
 :root {
   font-size: 62.5%;
+
+  --green-trybe: #2fc18b;
+
+  --green-trybe-hover: #279b70;
+
+  --gray-trybe-disabled: grey;
+
+  --yellow: #f9ba1a;
+
+  --magenta: #ea5d5d;
+
+  --purple: #3c1b7a;
+
+  --header-height: 11.3rem;
+
+  --height-button: 0.6rem;
+
 }
 
 * {
@@ -9,11 +26,17 @@
 }
 
 body {
+  background-color: #3c1b7a;
   font-family: sans-serif;
   font-size: 1.6rem;
+  overflow-x: hidden;
   width: 100%;
 }
 
-a, a:hover {
+a, a:hover, button {
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }

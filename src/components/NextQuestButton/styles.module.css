@@ -1,0 +1,13 @@
+.nextButton {
+  background: var(--green-trybe);
+  border-radius: 7px;
+  color: white;
+  font-size: 1.7rem;
+  font-weight: 600;
+  height: 4.5rem;
+  width: 100%;
+}
+
+.nextButton:hover {
+  background: #2aac7c;
+}

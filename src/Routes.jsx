@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Feedback from './pages/Feedback';
 import Game from './pages/Game';
-import Login from './pages/Login';
+import Login from './pages/Login/Login';
 import Ranking from './pages/Ranking';
 import Settings from './pages/Settings';
 

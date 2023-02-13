@@ -1,0 +1,231 @@
+.logoTrivia {
+  left: 50%;
+  position: absolute;
+  top: -26rem;
+  transform: translateX(-50%);
+  width: min(22rem, 100%);
+  z-index: 3;
+}
+
+.mainBoxQuestion {
+  color: white;
+  display: flex;
+  height: 32rem;
+  margin-top: 16.2rem;
+  position: relative;
+  width: 107.9rem;
+}
+
+.leftSide {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 50%;
+}
+
+.rightSide {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  position: relative;
+  width: 50%;
+}
+
+.titleQuestionBox {
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 700;
+  height: 28.6rem;
+  justify-content: center;
+  padding: 2rem;
+  position: absolute;
+  text-align: center;
+  width: 43.9rem;
+}
+
+.category {
+  align-items: center;
+  background-color: var(--yellow);
+  border-radius: 100px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: 4.5rem;
+  justify-content: center;
+  position: absolute;
+  top: -0.4rem;
+  width: 41.3rem;
+  z-index: 2;
+}
+
+.logoTrybe {
+  bottom: -6rem;
+  left: 50%;
+  margin-top: 2.6rem;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.titleQuestion {
+  color: black;
+}
+
+.answer {
+  background: white;
+  border: 3px solid black;
+  border-radius: 100px;
+  color: black;
+  height: 6.4rem;
+  position: relative;
+  width: 51.9rem;
+}
+
+.answer:nth-child( 1 ):hover, .answer:nth-child( 2 ):hover {
+  background: rgb(236, 236, 236);
+}
+
+.answer:nth-child( 3 ):hover, .answer:nth-child( 4 ):hover {
+  background: rgb(236, 236, 236);
+}
+
+.rightSide .answer:nth-child( 1 ):before {
+  content: url('../../assets/a.svg');
+  display: block;
+  left: 0.8rem;
+  position: absolute;
+  top: var(--height-button);
+  width: 2rem;
+  z-index: 4;
+}
+
+.rightSide .answer:nth-child( 2 ):before {
+  content: url('../../assets/b.svg');
+  display: block;
+  left: 0.8rem;
+  position: absolute;
+  top: var(--height-button);
+  width: 2rem;
+  z-index: 4;
+}
+
+.rightSide .answer:nth-child( 3 ):before {
+  content: url('../../assets/c.svg');
+  display: block;
+  left: 0.8rem;
+  position: absolute;
+  top: var(--height-button);
+  width: 2rem;
+  z-index: 4;
+}
+
+.rightSide .answer:nth-child( 4 ):before {
+  content: url('../../assets/d.svg');
+  display: block;
+  left: 0.8rem;
+  position: absolute;
+  top: var(--height-button);
+  width: 2rem;
+  z-index: 4;
+}
+
+.answer.correct:after {
+  content: url('../../assets/correct-icon.svg');
+  display: block;
+  height: 2rem;
+  left: 0.8rem;
+  position: absolute;
+  top: var(--height-button);
+  width: 2rem;
+  z-index: 4;
+}
+
+.answer.wrong:after {
+  content: url('../../assets/wrong-icon.svg');
+  display: block;
+  height: 2rem;
+  left: 0.8rem;
+  position: absolute;
+  top: var(--height-button);
+  width: 2rem;
+  z-index: 4;
+}
+
+.wrong {
+  border: 3px solid red;
+  filter: drop-shadow(0 0 22px #b83b3b);
+  position: relative;
+}
+
+.correct {
+  border: 3px solid rgb(6, 240, 15);
+  filter: drop-shadow(0 -1px 16px #2fc18c);
+  position: relative;
+}
+
+.nextQuestButton {
+  bottom: -6rem;
+  height: 4.5rem;
+  position: absolute;
+  width: 90%;
+}
+
+@media screen and ( max-width : 1090px ) {
+
+  .mainBoxQuestion {
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+    width: 100vw;
+  }
+
+  .logoTrivia {
+    top: -26rem;
+    width: 10rem;
+  }
+
+  .leftSide {
+    height: fit-content;
+    margin-top: 10rem;
+    width: min(60rem, 90%);
+  }
+
+  .rightSide {
+    height: fit-content;
+    margin-top: 17rem;
+    width: min(60rem, 90%);
+  }
+
+  .titleQuestionBox {
+    width: min(50rem, 90vw);
+  }
+
+  .answer {
+    width: min(50rem, 90vw);
+  }
+
+  .logoTrybe {
+    display: none;
+  }
+
+  .category {
+    top: -15.5rem;
+    width: 75%;
+  }
+
+  .nextQuestButton {
+    align-items: center;
+    bottom: -8rem;
+    display: flex;
+    height: 7.5rem;
+    padding: 3rem 0;
+    width: min(40rem, 80vw);
+  }
+
+}

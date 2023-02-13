@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Header from '../components/Header';
-import Question from '../components/Question';
-import Timer from '../components/Timer';
-import * as Actions from '../redux/actions';
-import { apiRequestQuestions } from '../services/api';
-import { getHashFromLocalStorage } from '../services/gravatar';
+import Header from '../../components/Header';
+import Question from '../../components/Question';
+import Timer from '../../components/Timer';
+import { apiRequestQuestions } from '../../services/api';
+import styles from './styles.module.css';
+import iconTimer from '../../assets/icon-timer.svg';
+import * as Actions from '../../redux/actions';
+import { getHashFromLocalStorage } from '../../services/gravatar';
 
 class Game extends Component {
   constructor(props) {
@@ -87,35 +89,41 @@ class Game extends Component {
 
   render() {
     const { questions, currQuestion, answered, hasBeenAnswered } = this.state;
-
     return (
       <div>
-        {console.log(questions.length)}
         <Header />
-        <h1>Tela do Jogo</h1>
-        <section>
+        <main className={ styles.wrapper }>
           {questions.map((data, index) => (
             index === currQuestion
-            && (
-              <>
-                <Question
-                  answered={ answered }
-                  { ...data }
-                  correctAnswer={ data.correct_answer }
-                  incorrectAnswers={ data.incorrect_answers }
-                  key={ data.question }
-                  // sendToFeedback={ this.se }
-                  nextBtn={ this.createNextBtn }
-                />
-                <Timer
-                  changeAnswered={ this.changeAnswered }
-                />
-              </>)
+                && (
+                  <div
+                    key={ data.question }
+                    className={ styles.mainGame }
+                  >
+                    <div>
+                      <Question
+                        answered={ answered }
+                        { ...data }
+                        correctAnswer={ data.correct_answer }
+                        incorrectAnswers={ data.incorrect_answers }
+                        key={ data.question }
+                        // sendToFeedback={ this.se }
+                        nextBtn={ this.createNextBtn }
+                        hasBeenAnswered={ hasBeenAnswered }
+                        nextQuestion={ this.nextQuestion }
+                      />
+                    </div>
+                    <div className={ styles.timer }>
+                      <img src={ iconTimer } alt="" />
+                      <p>Tempo:</p>
+                      <Timer
+                        changeAnswered={ this.changeAnswered }
+                      />
+                    </div>
+                  </div>)
           ))}
-
-        </section>
-        {hasBeenAnswered
-        && <button onClick={ this.nextQuestion } data-testid="btn-next">Next</button>}
+        </main>
+        <footer className={ styles.footer } />
       </div>
     );
   }
