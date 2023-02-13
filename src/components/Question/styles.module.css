@@ -79,6 +79,7 @@
 
 .answer {
   background: white;
+  border: 3px solid black;
   border-radius: 100px;
   color: black;
   height: 6.4rem;
@@ -99,7 +100,8 @@
   display: block;
   left: 0.8rem;
   position: absolute;
-  top: 0.7rem;
+  top: var(--height-button);
+  width: 2rem;
   z-index: 4;
 }
 
@@ -108,7 +110,8 @@
   display: block;
   left: 0.8rem;
   position: absolute;
-  top: 0.7rem;
+  top: var(--height-button);
+  width: 2rem;
   z-index: 4;
 }
 
@@ -117,7 +120,8 @@
   display: block;
   left: 0.8rem;
   position: absolute;
-  top: 0.7rem;
+  top: var(--height-button);
+  width: 2rem;
   z-index: 4;
 }
 
@@ -126,7 +130,8 @@
   display: block;
   left: 0.8rem;
   position: absolute;
-  top: 0.7rem;
+  top: var(--height-button);
+  width: 2rem;
   z-index: 4;
 }
 
@@ -136,7 +141,7 @@
   height: 2rem;
   left: 0.8rem;
   position: absolute;
-  top: 0.7rem;
+  top: var(--height-button);
   width: 2rem;
   z-index: 4;
 }
@@ -147,7 +152,7 @@
   height: 2rem;
   left: 0.8rem;
   position: absolute;
-  top: 0.7rem;
+  top: var(--height-button);
   width: 2rem;
   z-index: 4;
 }

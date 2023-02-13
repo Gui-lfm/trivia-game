@@ -105,7 +105,10 @@ class Question extends React.Component {
           <img className={ styles.logoTrybe } src={ logoTrybe } alt="" />
         </div>
 
-        <div className={ styles.rightSide }>
+        <div
+          className={ styles.rightSide }
+          data-testid="answer-options"
+        >
           {randAnswers.map((answer) => (
             <button
               className={ [styles.answer, this.colorAlternative(answer)].join(' ') }
