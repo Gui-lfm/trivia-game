@@ -6,6 +6,7 @@ import * as Actions from '../../redux/actions';
 import logoTrivia from '../../assets/logo-trivia.svg';
 import logoTrybe from '../../assets/trybe-logo.svg';
 import styles from './styles.module.css';
+import NextQuestButton from '../NextQuestButton';
 
 class Question extends React.Component {
   constructor(props) {
@@ -61,8 +62,8 @@ class Question extends React.Component {
     const { correctAnswer, answered } = this.props;
     if (answered) {
       return answer === correctAnswer
-        ? { border: '3px solid rgb(6, 240, 15)' }
-        : { border: '3px solid red' };
+        ? styles.correct
+        : styles.wrong;
     }
   }
 
@@ -74,6 +75,8 @@ class Question extends React.Component {
       nextBtn,
       // sendToFeedback,
       answered,
+      hasBeenAnswered,
+      nextQuestion,
     } = this.props;
 
     const { randAnswers } = this.state;
@@ -105,7 +108,7 @@ class Question extends React.Component {
         <div className={ styles.rightSide }>
           {randAnswers.map((answer) => (
             <button
-              style={ this.colorAlternative(answer) }
+              className={ [styles.answer, this.colorAlternative(answer)].join(' ') }
               onClick={ () => {
                 this.score(answer, difficulty);
                 nextBtn();
@@ -117,6 +120,9 @@ class Question extends React.Component {
               {answer}
             </button>
           ))}
+          <div className={ styles.nextQuestButton }>
+            {hasBeenAnswered && <NextQuestButton nextQuestion={ nextQuestion } />}
+          </div>
         </div>
       </div>
     );

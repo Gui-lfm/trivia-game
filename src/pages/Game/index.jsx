@@ -101,6 +101,8 @@ class Game extends Component {
                         key={ data.question }
                         // sendToFeedback={ this.se }
                         nextBtn={ this.createNextBtn }
+                        hasBeenAnswered={ hasBeenAnswered }
+                        nextQuestion={ this.nextQuestion }
                       />
                     </div>
                     <div className={ styles.timer }>
@@ -112,8 +114,6 @@ class Game extends Component {
                     </div>
                   </div>)
           ))}
-          {hasBeenAnswered
-            && <button onClick={ this.nextQuestion } data-testid="btn-next">Next</button>}
         </main>
         <footer className={ styles.footer } />
       </div>
