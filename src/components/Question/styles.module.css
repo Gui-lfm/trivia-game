@@ -153,11 +153,13 @@
 }
 
 .wrong {
+  border: 3px solid red;
   filter: drop-shadow(0 0 22px #b83b3b);
   position: relative;
 }
 
 .correct {
+  border: 3px solid rgb(6, 240, 15);
   filter: drop-shadow(0 -1px 16px #2fc18c);
   position: relative;
 }
@@ -184,7 +186,6 @@
   }
 
   .leftSide {
-    border: 1px solid green;
     height: fit-content;
     margin-top: 10rem;
     width: min(60rem, 90%);
