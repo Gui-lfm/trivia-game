@@ -31,6 +31,7 @@ class Ranking extends Component {
             avatar={ user.avatar }
           />))}
         </div>
+
         <Link to="/">
           <button
             data-testid="btn-go-home"
